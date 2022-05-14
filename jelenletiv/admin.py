@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from jelenletiv.models import Alkalom, Foglalkozas, Osztaly, Tanulo
+
+admin.site.register(Alkalom)
+admin.site.register(Foglalkozas)
+admin.site.register(Tanulo)
+admin.site.register(Osztaly)
