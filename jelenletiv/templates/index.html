@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>cim</title>{% endblock %}
+
+{% block content %}
+
+<h1>{{ alkalmak.first.foglalkozas.nev }}</h1>
+
+{% for alkalom in alkalmak %}
+<div class="box">
+    <h2>{{ alkalom.datum }}</h2>
+    <a href="/{{ alkalom.foglalkozas.url }}/{{ alkalom.pk }}"><button>Résztvevők</button></a>
+</div>
+{% endfor %}
+
+{% endblock %}
