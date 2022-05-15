@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% block statics%}
+<link rel="stylesheet" href="{% static 'css/alkalom.css' %}">
+{% endblock %}
+
 {% block title %}<title>cim</title>{% endblock %}
 
 {% block content %}
 
-<h1>{{ azalkalom.foglalkozas.nev }}</h1>
-<h3>{{ azalkalom.datum }}</h3>
+<div class="info">
+    <h1>{{ azalkalom.foglalkozas.nev }}</h1>
+    <h3>{{ azalkalom.datum }}</h3>
+</div>
 
 {% for diak in resztvevok %}
 <div class="box">

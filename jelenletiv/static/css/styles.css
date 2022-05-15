@@ -31,6 +31,7 @@ header{
 }
 header .cim{
     grid-column: 2;
+    font-size: 28pt;
 }
 header nav{
     grid-column: 3;
@@ -41,33 +42,92 @@ header nav ul{
     justify-content: right;
     gap: 40%;
 }
+header nav a:hover{
+    opacity: 75%;
+}
 main{
     height: auto;
     grid-column: 2;
+    margin: 4em 0 2em 0;
 
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 2em;
     justify-content: center;
     align-items: center;
 }
 footer{
-    height: auto;
+    height: 150%;
     grid-column: 1/4;
+
+    background-color: var(--fekete);
+    color: var(--feher);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
+.box{
+    border-radius: 1em;
+    padding: 2em;
+
+    background-color: var(--kek);
+    color: var(--feher);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+}
+.box button{
+    border: none;
+    border-radius: 1.5em;
+    padding: 1em;
+
+    background-color: var(--fekete);
+    color: var(--feher);
+    
+    font-weight: 600;
+    font-size: 12pt;
+    
+    cursor: pointer;
+    transition: 0.2s;
+}
+.box button:hover{
+    background-color: var(--feher);
+    color: var(--kek);
+}
+
 
 
 h1, h2, h3, a, p, ul, li{
     background-color: transparent;
     color: inherit;
 }
+h1{
+    font-size: 30pt;
+    font-weight: 700;
+}
+h2{
+    font-size: 20pt;
+    font-weight: 600;
+}
+h3{
+    font-size: 16pt;
+    font-weight: 500;
+}
+h4{
+    font-size: 14;
+    font-weight: 500;
+}
 li{
     list-style: none;
 }
 a{
+    cursor: pointer;
     text-decoration: none;
-    transition: 0.1s;
-}
-a:hover{
-    opacity: 75%;
+    transition: 0.2s;
 }
