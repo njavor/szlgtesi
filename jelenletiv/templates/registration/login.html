@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% block statics %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 {% block title %}<title>Bejelentkezés</title>{% endblock %}
 
 {% block content %}
-<h1>Bejelentkezés</h1>
-<form method="post">
+<form method="post" class="box">
+    <h1>Bejelentkezés</h1>
     {% csrf_token %}
     {{form.as_p}}
     <button>Bejelentkezés</button>

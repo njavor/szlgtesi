@@ -1,10 +1,22 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% block statics %}
+<link rel="stylesheet" href="{% static 'css/foglalkozas.css' %}">
+{% endblock %}
+
 {% block title %}<title>cim</title>{% endblock %}
 
 {% block content %}
 
 <h1>{{ alkalmak.first.foglalkozas.nev }}</h1>
+
+{% if ma %}
+<div class="box ma">
+    <h2>{{ ma.datum }}</h2>
+    <a href="/{{ ma.foglalkozas.url }}/{{ ma.pk }}"><button>Résztvevők</button></a>
+</div>
+{% endif %}
 
 {% for alkalom in alkalmak %}
 <div class="box">
