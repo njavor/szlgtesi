@@ -9,9 +9,12 @@
 
 {% block content %}
 <form method="post" class="box">
-    <h1>Bejelentkezés</h1>
     {% csrf_token %}
-    {{form.as_p}}
+
+    <h1>Bejelentkezés</h1>
+    <div class="aform">
+        {{form.as_p}}
+    </div>
     <button>Bejelentkezés</button>
 </form>
 {% endblock %}

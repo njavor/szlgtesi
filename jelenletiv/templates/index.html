@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block statics %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block title %}<title>cim</title>{% endblock %}
+
+{% block content %}
+
+<div class="kismain">
+    <form action="" method="post" class="box">
+        <h1>Adatbázis szerkesztés</h1>
+        <textarea name="valami" id="" cols="30" rows="10"></textarea>
+        <div class="gombok">
+            <button type="submit">Igen</button>
+            <button type="submit">Yes</button>
+            <button type="submit">Si</button>
+        </div>
+    </form>
+</div>
+
+<div class="kismain">
+    <h1>Foglalkozások</h1>
+    <div class="fog">        
+        {% for foglalkozas in foglalkozasok %}
+        <div class="box">
+            <h2>{{ foglalkozas.nev }}</h2>
+            <a href="/{{ foglalkozas.url }}"><button>Alkalmak</button></a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

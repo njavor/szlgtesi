@@ -1,5 +1,4 @@
 import datetime
-import re
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -15,17 +14,18 @@ def indexview(request):
         return HttpResponseRedirect(filter.url + '/')
     except:
         context['foglalkozasok'] = Foglalkozas.objects.all()
-        return render(request, "ighely.html", context)
+        return render(request, "index.html", context)
 
 @login_required
 def foglalkozasview(request, fog):
-    context = {'alkalmak': Alkalom.objects.filter(foglalkozas__url = fog).order_by('-datum'),}
+    context = {'alkalmak': Alkalom.objects.filter(foglalkozas__url = fog).order_by('-datum')}
     if not request.user.is_staff:
         try:
             ma = Alkalom.objects.filter(foglalkozas__url = fog).get(datum=datetime.datetime.now())
-            context['alkalmak'] = Alkalom.objects.filter(foglalkozas__url = fog).exclude(datum = ma.datum).order_by('-datum')
+            context['alkalmak'] = Alkalom.objects.filter(foglalkozas__url = fog).exclude(datum = ma.datum).exclude(datum__gt = ma.datum).order_by('-datum')
             context['ma'] = ma
-        except: pass
+        except:
+            context['alkalmak'] = Alkalom.objects.filter(foglalkozas__url = fog).exclude(datum__gt=datetime.datetime.now()).order_by('-datum')
     else:
         context['staff'] = True
     return render(request, "foglalkozas.html", context)

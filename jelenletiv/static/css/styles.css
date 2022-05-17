@@ -26,8 +26,7 @@ header{
     color: var(--feher);
 
     display: grid;
-    grid-template-columns: 5% 25% 65% 5%;
-    grid-template-rows: 100%;
+    grid-template-columns: 5% 35% 55% 5%;
 
     align-items: center;
 }
@@ -36,7 +35,7 @@ header .balh{
     display: flex;
     justify-content: left;
     align-items: center;
-    gap: 10%;
+    gap: 2em;
 }
 .balh .cim{
     font-size: 28pt;
@@ -47,15 +46,14 @@ header .balh{
 header nav{
     grid-column: 3;
     justify-self: right;
-    width: 100%;
 }
 header nav ul{
-    width: 100%;
+    
     display: flex;
     justify-content: right;
     align-items: center;
-    gap: 10%;
-    text-align: center;
+    gap: 2em;
+    text-align: right;
 }
 header nav a:hover{
     opacity: 75%;
@@ -83,6 +81,14 @@ footer{
     align-items: center;
 }
 
+
+.kismain{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
 
 .box{
     border-radius: 1em;
