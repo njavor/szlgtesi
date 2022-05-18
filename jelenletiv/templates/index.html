@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<div class="kismain">
+<div class="section narrow">
     <form action="" method="post" class="box">
         <h1>Adatbázis szerkesztés</h1>
         <textarea name="valami" id="" cols="30" rows="10"></textarea>
@@ -21,15 +21,16 @@
     </form>
 </div>
 
-<div class="kismain">
-    <h1>Foglalkozások</h1>
-    <div class="fog">        
-        {% for foglalkozas in foglalkozasok %}
-        <div class="box">
-            <h2>{{ foglalkozas.nev }}</h2>
-            <a href="/{{ foglalkozas.url }}"><button>Alkalmak</button></a>
-        </div>
-        {% endfor %}
+
+<div class="section column wide">
+<h1>Foglalkozások</h1>
+    <div class="section row wide">
+    {% for foglalkozas in foglalkozasok %}
+    <div class="box">
+        <h2>{{ foglalkozas.nev }}</h2>
+        <a href="/{{ foglalkozas.url }}"><button>Alkalmak</button></a>
+    </div>
+    {% endfor %}
     </div>
 </div>
 

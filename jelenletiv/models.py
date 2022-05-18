@@ -62,7 +62,7 @@ class Alkalom(models.Model):
 
     datum = models.DateField()
     foglalkozas = models.ForeignKey(Foglalkozas, on_delete=models.CASCADE)
-    resztvett = models.ManyToManyField(Tanulo, blank=True)
+    hianyzok = models.ManyToManyField(Tanulo, blank=True)
 
     def __str__(self) -> str:
         return str(self.datum) + " - " + self.foglalkozas.nev

@@ -18,11 +18,13 @@
 </div>
 {% endif %}
 
-{% for alkalom in alkalmak %}
-<div class="box">
-    <h2>{{ alkalom.datum }}</h2>
-    <a href="/{{ alkalom.foglalkozas.url }}/{{ alkalom.pk }}"><button>Résztvevők</button></a>
+<div class="section column biggap">
+    {% for alkalom in alkalmak %}
+    <div class="box">
+        <h2>{{ alkalom.datum }}</h2>
+        <a href="/{{ alkalom.foglalkozas.url }}/{{ alkalom.pk }}"><button>Résztvevők</button></a>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
 
 {% endblock %}

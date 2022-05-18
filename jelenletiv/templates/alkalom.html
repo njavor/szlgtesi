@@ -9,15 +9,18 @@
 
 {% block content %}
 
-<div class="info">
+<div class="section column nogap">
     <h1>{{ azalkalom.foglalkozas.nev }}</h1>
     <h3>{{ azalkalom.datum }}</h3>
 </div>
 
-{% for diak in resztvevok %}
-<div class="box">
-    <h3>{{ diak.nev }}</h3>
+<div class="section column biggap">
+    {% for diak in resztvevok %}
+    <div class="box">
+        <h3>{{ diak.nev }}</h3>
+        <button class="nincs"></button>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
 
 {% endblock %}

@@ -6,7 +6,7 @@
     --fekete: #222;
     --kek: #0E4958;
     --zold: #22b573;
-    --speed: 200ms;
+    --piros: #b52222;
 
     font-family: 'Radio Canada', sans-serif;
 }
@@ -82,17 +82,27 @@ footer{
 }
 
 
-.kismain{
+.section{
     display: flex;
-    flex-direction: column;
-    gap: 1em;
     justify-content: center;
     align-items: center;
+    gap: 1em;
 }
+.wide{ width: 100%;}
+.narrow{ width: fit-content;}
+.nogap{ gap: 0; }
+.biggap{ gap: 2em; }
+.column{ flex-direction: column;}
+.row{
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 
 .box{
     border-radius: 1em;
     padding: 2em;
+    width: 100%;
 
     background-color: var(--kek);
     color: var(--feher);
@@ -127,6 +137,7 @@ footer{
 h1, h2, h3, a, p, ul, li{
     background-color: transparent;
     color: inherit;
+    text-align: center;
 }
 h1{
     font-size: 30pt;
