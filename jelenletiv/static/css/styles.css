@@ -82,23 +82,6 @@ footer{
 }
 
 
-.section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
-}
-.wide{ width: 100%;}
-.narrow{ width: fit-content;}
-.nogap{ gap: 0; }
-.biggap{ gap: 2em; }
-.column{ flex-direction: column;}
-.row{
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-
 .box{
     border-radius: 1em;
     padding: 2em;
@@ -132,6 +115,22 @@ footer{
     color: var(--kek);
 }
 
+
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+.wide{ width: 100%;}
+.narrow{ width: fit-content;}
+.nogap{ gap: 0; }
+.biggap{ gap: 2em; }
+.column{ flex-direction: column;}
+.row{
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
 
 h1, h2, h3, a, p, ul, li{

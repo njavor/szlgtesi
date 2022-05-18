@@ -11,14 +11,15 @@
 
 <h1>{{ alkalmak.first.foglalkozas.nev }}</h1>
 
-{% if ma %}
-<div class="box ma">
-    <h2>{{ ma.datum }}</h2>
-    <a href="/{{ ma.foglalkozas.url }}/{{ ma.pk }}"><button>Résztvevők</button></a>
-</div>
-{% endif %}
-
 <div class="section column biggap">
+    
+    {% if ma %}
+    <div class="box ma">
+        <h2>{{ ma.datum }}</h2>
+        <a href="/{{ ma.foglalkozas.url }}/{{ ma.pk }}"><button>Résztvevők</button></a>
+    </div>
+    {% endif %}
+
     {% for alkalom in alkalmak %}
     <div class="box">
         <h2>{{ alkalom.datum }}</h2>
