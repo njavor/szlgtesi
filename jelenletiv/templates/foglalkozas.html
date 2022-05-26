@@ -11,10 +11,35 @@
 
 <h1>{{ alkalmak.first.foglalkozas.nev }}</h1>
 
+{% if request.user.is_staff %}
+<div class="section row wide">
+    <div id="adszerkeszto" class="section column narrow">
+        <form action="" method="post" class="box">
+            {% csrf_token %}
+            <h1>Adatbázis szerkesztés</h1>
+            <textarea name="data" id="data" cols="30" rows="10"></textarea>
+            <div class="section row wide">
+                <button type="submit" name="alkalom">Alkalmak hozzáadása</button>
+                <button type="submit" name="atorles">Alkalmak törlése</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="tanulok" class="box column narrow">
+        <h1>Tanulók</h1>
+        {% for tanulo in resztvevok %}
+        <p>{{ tanulo.nev }} - {{ tanulo.osztaly }}</p>
+        {% endfor %}
+    </div>
+    <hr>
+</div>
+
+{% endif %}
+
 <div class="section column biggap">
     
     {% if ma %}
-    <div class="box ma">
+    <div class="box zold">
         <h2>{{ ma.datum }}</h2>
         <a href="/{{ ma.foglalkozas.url }}/{{ ma.pk }}"><button>Résztvevők</button></a>
     </div>

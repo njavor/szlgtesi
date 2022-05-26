@@ -4,25 +4,34 @@
 
 {% block content %}
 
-<div class="section narrow">
+<div id="adszerkeszto" class="section column wide">
     <form action="" method="post" class="box">
+        {% csrf_token %}
         <h1>Adatbázis szerkesztés</h1>
-        <textarea name="valami" id="" cols="30" rows="10"></textarea>
-        <div class="gombok">
-            <button type="submit">Igen</button>
-            <button type="submit">Yes</button>
-            <button type="submit">Si</button>
+        <textarea name="data" id="data" cols="30" rows="10"></textarea>
+        <div class="section row wide">
+            <button type="submit" name="edzo">Edzők hozzáadása</button>
+            <button type="submit" name="etorles" id="etorles">Edzők törlése</button>
+            <button type="submit" name="foglalkozas">Foglalkozások hozzáadása</button>
+            <button type="submit" name="ftorles" id="ftorles">Foglalkozások törlése</button>
+            <button type="submit" name="tanulo">Tanulók hozzáadása</button>
+            <button type="submit" name="ttorles" id="ttorles">Tanulók törlése</button>
         </div>
+        <button type="submit" name="alltorles" class="piros">Összes adat törlése</button>
     </form>
+    <hr>
 </div>
 
 
-<div class="section column wide">
+<div id="foglalkozasok" class="section column wide">
 <h1>Foglalkozások</h1>
     <div class="section row wide">
     {% for foglalkozas in foglalkozasok %}
-    <div class="box">
-        <h2>{{ foglalkozas.nev }}</h2>
+    <div class="box narrow">
+        <div class="section column narrow nogap">
+            <h2>{{ foglalkozas.nev }}</h2>
+            <p>{{ foglalkozas.edzo.last_name }} {{ foglalkozas.edzo.first_name }}</p>
+        </div>
         <a href="/{{ foglalkozas.url }}"><button>Alkalmak</button></a>
     </div>
     {% endfor %}

@@ -18,7 +18,11 @@
     {% for diak in resztvevok %}
     <div class="box">
         <h3>{{ diak.nev }}</h3>
-        <button class="nincs"></button>
+        {% if diak in hianyzok %}
+        <button id="nincs"></button>
+        {% else %}
+        <button id="van"></button>
+        {% endif %}
     </div>
     {% endfor %}
 </div>

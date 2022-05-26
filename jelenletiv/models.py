@@ -6,24 +6,8 @@ class Osztaly(models.Model):
         verbose_name = "Osztály"
         verbose_name_plural = "Osztályok"
 
-    EVFOLYAMOK = (
-        ('NY','NY'),
-        ('9','9'),
-        ('10','10'),
-        ('11','11'),
-        ('12','12'),
-    )
-    TAGOZATOK = (
-        ('A','A'),
-        ('B','B'),
-        ('C','C'),
-        ('D','D'),
-        ('E','E'),
-        ('F','F'),
-    )
-
-    evfolyam = models.CharField(max_length=2, choices=EVFOLYAMOK)
-    tagozat = models.CharField(max_length=2, choices=TAGOZATOK)
+    evfolyam = models.CharField(max_length=2)
+    tagozat = models.CharField(max_length=1)
 
     def __str__(self) -> str:
         return self.evfolyam + self.tagozat
@@ -54,6 +38,9 @@ class Foglalkozas(models.Model):
     def __str__(self) -> str:
         return self.nev + " - " + self.edzo.last_name + " " + self.edzo.first_name
 
+    def geturl(f):
+        return Foglalkozas.objects.get(url = f)
+
 
 class Alkalom(models.Model):
     class Meta:
@@ -66,3 +53,9 @@ class Alkalom(models.Model):
 
     def __str__(self) -> str:
         return str(self.datum) + " - " + self.foglalkozas.nev
+
+    def filterurl(f):
+        return Alkalom.objects.filter(foglalkozas__url = f)
+        
+    def geturldatum(f, d):
+        return Alkalom.objects.filter(foglalkozas__url = f).get(datum=d)
