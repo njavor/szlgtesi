@@ -6,16 +6,12 @@
     border-radius: 100%;
     padding: 2em;
 }
-.box .nincs{
+.box #nincs{
     background-color: var(--piros);
 }
-.box .nincs:hover{
+.box #nincs:hover{
     background-color: var(--zold);
 }
 
-.box  .van{
-    background-color: var(--zold);
-}
-.box  .van:hover{
-    background-color: var(--piros);
-}
+.box #van{ background-color: var(--zold); }
+.box  #van:hover{ background-color: var(--piros); }
