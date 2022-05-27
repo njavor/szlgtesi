@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from jelenletiv.views import foglalkozasview, indexview, alkalomview, alldeleteview
+from jelenletiv.views import foglalkozasview, indexview, alkalomview, alldeleteview, apiview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -10,7 +10,6 @@ urlpatterns = [
     path('mindentorles/', alldeleteview, name="alldelete"),
     path('<str:fog>/', foglalkozasview, name="foglalkozas"),
     path('<str:fog>/<int:alk>/', alkalomview, name="alkalom"),
+
+    path('api/post/jelenlet/',apiview)
 ]
-#+[
-#    path('api/get/',)
-#]
