@@ -8,7 +8,8 @@
     <form action="" method="post" class="box">
         {% csrf_token %}
         <h1>Adatbázis szerkesztés</h1>
-        <textarea name="data" id="data" cols="30" rows="10"></textarea>
+        <textarea name="data" id="data" cols="30" rows="10"
+        placeholder="EDZŐ:&#10;edzoendre;Edző;Endre;1234&#10;baratbela;Barát;Béla;asdf&#10;&#13;FOGLALKOZÁS:&#10;Karate;karate;edzoendre&#10;Ping-pong;ping_pong;baratbela&#10;&#13;TANULÓ:&#10;Gyarmati Réka;9;B;Karate&#10;Raulf Károly;12;F;Ping-pong"></textarea>
         <div class="section row wide">
             <button type="submit" name="edzo">Edzők hozzáadása</button>
             <button type="submit" name="etorles" id="etorles">Edzők törlése</button>

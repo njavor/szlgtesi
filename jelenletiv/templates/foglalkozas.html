@@ -17,7 +17,8 @@
         <form action="" method="post" class="box">
             {% csrf_token %}
             <h1>Adatbázis szerkesztés</h1>
-            <textarea name="data" id="data" cols="30" rows="10"></textarea>
+            <textarea name="data" id="data" cols="30" rows="10"
+            placeholder="2030-01-01&#10;2030-01-07"></textarea>
             <div class="section row wide">
                 <button type="submit" name="alkalom">Alkalmak hozzáadása</button>
                 <button type="submit" name="atorles">Alkalmak törlése</button>
