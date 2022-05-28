@@ -10,9 +10,11 @@ function main(){
             await kuldo_fetch('http://localhost:8000/api/post/jelenlet/',{'a': fields[0], 'd': fields[1], 'vE': fields[2]})
             if(gomb.classList.contains('van')){
                 gomb.classList.remove('van')
+                gomb.id = fields[0] + "-" + fields[1] + "-nincs"
                 gomb.classList.add('nincs')
             } else{
                 gomb.classList.remove('nincs')
+                gomb.id = fields[0] + "-" + fields[1] + "-van"
                 gomb.classList.add('van')
             }
         })
