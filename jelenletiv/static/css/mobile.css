@@ -1,5 +1,5 @@
 @media all and (max-width: 480px){
     #adszerkeszto{display: none;}
     .box{width: 70%;}
-    h1{font-size: 20pt;}
+    main h1{font-size: 25pt;}
 }

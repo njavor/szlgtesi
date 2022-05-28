@@ -181,4 +181,7 @@ hr{
 form textarea{
     width: 90%;
     height: 20em;
+    padding: 0.1em 0.2em;
+    outline: none;
+    resize: none;
 }

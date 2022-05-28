@@ -18,7 +18,7 @@
             {% csrf_token %}
             <h1>Adatbázis szerkesztés</h1>
             <textarea name="data" id="data" cols="30" rows="10"
-            placeholder="2030-01-01&#10;2030-01-07"></textarea>
+            placeholder="ALKALOM:&#10;2030-01-01&#10;2030-01-07"></textarea>
             <div class="section row wide">
                 <button type="submit" name="alkalom">Alkalmak hozzáadása</button>
                 <button type="submit" name="atorles">Alkalmak törlése</button>
@@ -28,9 +28,11 @@
     
     <div id="tanulok" class="box column narrow">
         <h1>Tanulók</h1>
-        {% for tanulo in resztvevok %}
-        <p>{{ tanulo.nev }} - {{ tanulo.osztaly }}</p>
-        {% endfor %}
+        <div class="section column nogap">
+            {% for tanulo in resztvevok %}
+            <p>{{ tanulo.nev }} - {{ tanulo.osztaly }}</p>
+            {% endfor %}
+        </div>
     </div>
     <hr>
 </div>
