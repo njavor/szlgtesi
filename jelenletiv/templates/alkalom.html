@@ -19,9 +19,9 @@
     <div class="box">
         <h3>{{ diak.nev }}</h3>
         {% if diak in hianyzok %}
-        <button id="nincs"></button>
+        <button id="{{ azalkalom.pk }}-{{ diak.id }}-van" class="apig nincs"></button>
         {% else %}
-        <button id="van"></button>
+        <button id="{{ azalkalom.pk }}-{{ diak.id }}-nincs" class="apig van"></button>
         {% endif %}
     </div>
     {% endfor %}

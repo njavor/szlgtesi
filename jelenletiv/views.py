@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseRedirect
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from .models import Alkalom, Foglalkozas, Osztaly, Tanulo
 
 @login_required
@@ -110,3 +113,17 @@ def alkalomview(request, fog, alk):
         context['staff'] = True
     return render(request, "alkalom.html", context)
 
+
+
+
+####  API VIEW  ####
+@login_required
+@api_view(["POST"])
+def apiview(request):
+
+    if request.data['vE'] == 'nincs':
+        Alkalom.objects.get(id = request.data['a']).hianyzok.add(request.data['d'])
+        return Response(request.data['d'] + ' hiányzott.')
+    elif request.data['vE'] == 'van':
+        Alkalom.objects.get(id = request.data['a']).hianyzok.remove(request.data['d'])
+        return Response(request.data['d'] + ' nem hiányzott.')
