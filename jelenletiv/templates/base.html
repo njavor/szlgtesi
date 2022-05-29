@@ -27,7 +27,7 @@
             <h4 class="felhasznalo">{{ request.user.last_name }} {{ request.user.first_name }}</h4>
             {% endif %}
         </div>
-        <nav>
+        <nav id="desktop-nav">
             <ul>
                 {% if azalkalom %}
                 <a href="/{{azalkalom.foglalkozas.url}}"><li>Alkalmak</li></a>

@@ -45,18 +45,18 @@ header .balh{
 .balh .felhasznalo{
     opacity: 80%;
 }
-header nav{
+header #desktop-nav{
     grid-column: 3;
     justify-self: right;
 }
-header nav ul{
+header #desktop-nav ul{
     display: flex;
     justify-content: right;
     align-items: center;
     gap: 2em;
     text-align: right;
 }
-header nav a:hover{
+header #desktop-nav a:hover{
     opacity: 75%;
 }
 main{
