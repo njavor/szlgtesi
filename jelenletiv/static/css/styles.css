@@ -59,6 +59,7 @@ header #desktop-nav ul{
 header #desktop-nav a:hover{
     opacity: 75%;
 }
+
 main{
     grid-row: 2;
     grid-column: 2;

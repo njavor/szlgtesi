@@ -6,10 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="data:,">
+    <link rel="icon"href="{% static 'favicon.ico' %}">
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/mobile.css' %}">
+    {% if azalkalom %}
+        <link rel="stylesheet" href="{% static 'css/nagynav.css' %}">
+    {% elif staff %}
+        <link rel="stylesheet" href="{% static 'css/koznav.css' %}">
+    {% endif %}
+    
     <script src="{% static 'js/scripts.js' %}"></script>
     {% block statics %}{% endblock %}
 

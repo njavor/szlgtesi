@@ -1,6 +1,5 @@
 @media all and (max-width: 480px){
     #desktop-nav{display: none;}
-    
     #adszerkeszto{display: none;}
     .box{width: 70%;}
     main h1{font-size: 25pt;}
