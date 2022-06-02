@@ -85,8 +85,8 @@ def foglalkozasview(request, fog):
         except:
             context['alkalmak'] = Alkalom.filterurl(fog).exclude(datum__gt=datetime.datetime.now()).order_by('-datum')
     else:
-        context['staff'] = True
-        context['resztvevok'] = Foglalkozas.objects.get(url = fog).diakok.all()
+        context['staff'] = True        
+        context['resztvevok'] = Foglalkozas.geturl(fog).diakok.all()
         if request.method == "POST":
             data = str(request.POST['data']).split("\n")
             if 'alkalom' in request.POST:
@@ -121,9 +121,9 @@ def alkalomview(request, fog, alk):
 @api_view(["POST"])
 def apiview(request):
 
-    if request.data['vE'] == 'nincs':
+    if request.data['vE'] == 'van':
         Alkalom.objects.get(id = request.data['a']).hianyzok.add(request.data['d'])
         return Response(request.data['d'] + ' hiányzott.')
-    elif request.data['vE'] == 'van':
+    elif request.data['vE'] == 'nincs':
         Alkalom.objects.get(id = request.data['a']).hianyzok.remove(request.data['d'])
         return Response(request.data['d'] + ' nem hiányzott.')

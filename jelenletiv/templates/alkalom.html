@@ -22,9 +22,9 @@
             <p>{{ diak.osztaly }}</p>
         </div>
         {% if diak in hianyzok %}
-        <button id="{{ azalkalom.pk }}-{{ diak.id }}-van" class="apig nincs"></button>
+        <button id="{{ azalkalom.pk }}-{{ diak.id }}-nincs" class="apig nincs"></button>
         {% else %}
-        <button id="{{ azalkalom.pk }}-{{ diak.id }}-nincs" class="apig van"></button>
+        <button id="{{ azalkalom.pk }}-{{ diak.id }}-van" class="apig van"></button>
         {% endif %}
     </div>
     {% endfor %}
