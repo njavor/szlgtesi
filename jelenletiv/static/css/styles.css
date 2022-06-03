@@ -59,6 +59,44 @@ header #desktop-nav ul{
 header #desktop-nav a:hover{
     opacity: 75%;
 }
+#mobile-nav{
+    z-index:1;
+    
+    grid-column: 1/4;
+    grid-row: 2;
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+    font-size: 25pt;
+}
+
+#hamburger-icon {
+display: none;
+grid-column: 3;
+justify-self: right;
+align-self: center;
+
+cursor: pointer;
+}
+.bar1, .bar2, .bar3 {
+width: 35px;
+height: 4px;
+border-radius: 2em;
+background-color: var(--feher);
+margin: 6px 0;
+transition: 0.4s;
+}
+.change .bar1 {
+-webkit-transform: rotate(-45deg) translate(-6px, 6px);
+transform: rotate(-45deg) translate(-6spx, 6px);
+}
+.change .bar2 {opacity: 0;}
+.change .bar3 {
+-webkit-transform: rotate(45deg) translate(-8px, -8px);
+transform: rotate(45deg) translate(-8px, -8px);
+}
 
 main{
     grid-row: 2;

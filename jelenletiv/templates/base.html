@@ -46,7 +46,25 @@
                 {% endif %}
             </ul>
         </nav>
+        <div id="hamburger-icon">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
     </header>
+    <nav id="mobile-nav">
+        <ul>
+            {% if azalkalom %}
+            <a href="/{{azalkalom.foglalkozas.url}}"><li>Alkalmak</li></a>
+            {% endif %}                
+            {% if staff %}
+            <a href="{% url 'index' %}"><li>Foglalkozások</li></a>
+            {% endif %}    
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}"><li>Kijelentkezés</li></a>
+            {% endif %}
+        </ul>
+    </nav>
 
     <main>
         {% block content %}

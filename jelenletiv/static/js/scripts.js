@@ -12,7 +12,7 @@ function main(){
                 gomb.classList.remove('van')
                 gomb.id = fields[0] + "-" + fields[1] + "-nincs"
                 gomb.classList.add('nincs')
-            } else{
+            }else{
                 gomb.classList.remove('nincs')
                 gomb.id = fields[0] + "-" + fields[1] + "-van"
                 gomb.classList.add('van')
@@ -20,6 +20,10 @@ function main(){
         })
     })
     
+    document.getElementById('hamburger-icon').addEventListener('click', async function(){
+        this.classList.toggle("change");
+        document.getElementById('mobile-nav').classList.toggle("change")
+    })
 }
 
 //////////////////////////////////////
