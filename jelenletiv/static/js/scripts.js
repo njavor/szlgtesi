@@ -6,23 +6,33 @@ function main(){
     /// Hiányzók jelölése
     document.querySelectorAll('.apig').forEach(function(gomb){
         gomb.addEventListener('click',async function(){
-            fields = this.id.split("-")
-            await kuldo_fetch('http://localhost:8000/api/post/jelenlet/',{'a': fields[0], 'd': fields[1], 'vE': fields[2]})
+            fields = this.id.split("-");
+            await kuldo_fetch('http://localhost:8000/api/post/jelenlet/',{'a': fields[0], 'd': fields[1], 'vE': fields[2]});
             if(gomb.classList.contains('van')){
-                gomb.classList.remove('van')
-                gomb.id = fields[0] + "-" + fields[1] + "-nincs"
-                gomb.classList.add('nincs')
+                gomb.classList.remove('van');
+                gomb.id = fields[0] + "-" + fields[1] + "-nincs";
+                gomb.classList.add('nincs');
             }else{
-                gomb.classList.remove('nincs')
-                gomb.id = fields[0] + "-" + fields[1] + "-van"
-                gomb.classList.add('van')
+                gomb.classList.remove('nincs');
+                gomb.id = fields[0] + "-" + fields[1] + "-van";
+                gomb.classList.add('van');
             }
         })
     })
     
+
+    /// Mobil menü
     document.getElementById('hamburger-icon').addEventListener('click', async function(){
         this.classList.toggle("change");
-        document.getElementById('mobile-nav').classList.toggle("change")
+        document.getElementById('mobile-nav').classList.toggle("change");
+    })
+    window.addEventListener('resize', function(){
+        hi = document.getElementById('hamburger-icon');
+        mn = document.getElementById('mobile-nav');
+        if(this.getComputedStyle(hi, null).getPropertyValue("display") === "none"){
+            hi.classList.remove("change");
+            mn.classList.remove("change");
+        }
     })
 }
 
