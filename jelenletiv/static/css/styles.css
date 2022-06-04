@@ -28,7 +28,7 @@ header{
     color: var(--feher);
 
     display: grid;
-    grid-template-columns: 5% 35% 55% 5%;
+    grid-template-columns: 50px 1fr 2fr 30px;
 
     align-items: center;
 }
@@ -59,6 +59,7 @@ header #desktop-nav ul{
 header #desktop-nav a:hover{
     opacity: 75%;
 }
+
 #mobile-nav{
     z-index:1;
     
@@ -71,13 +72,14 @@ header #desktop-nav a:hover{
 
     font-size: 25pt;
 }
-
+#mobile-nav.change{
+    display: flex;
+}
 #hamburger-icon {
 display: none;
 grid-column: 3;
 justify-self: right;
 align-self: center;
-
 cursor: pointer;
 }
 .bar1, .bar2, .bar3 {
