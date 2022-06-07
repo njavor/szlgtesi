@@ -87,6 +87,7 @@ header #desktop-nav a:hover{
 #mobile-nav .kijelentkezes{
     margin-top: 1em;
     opacity: 50%;
+    font-weight: 300;
 }
 #mobile-nav.change{
     display: flex;
