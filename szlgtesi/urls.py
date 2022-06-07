@@ -2,7 +2,7 @@ from django.views.generic.base import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.contrib import admin
 from django.urls import path, include
-from jelenletiv.views import foglalkozasview, indexview, alkalomview, alldeleteview, apiview
+from jelenletiv.views import foglalkozasview, indexview, alkalomview, deleteview, apiview
 
 urlpatterns = [
     path(
@@ -14,9 +14,15 @@ urlpatterns = [
 
     path('', include('django.contrib.auth.urls')),
     path('', indexview, name="index"),
-    path('mindentorles/', alldeleteview, name="alldelete"),
+
+    path('mindentorles/', deleteview, name="alldelete"),
+    path('edzotorles/', deleteview, name="edelete"),
+    path('foglalkozastorles/', deleteview, name="fdelete"),
+    path('tanulotorles/', deleteview, name="tdelete"),
+    path('torles/<str:fog>/', deleteview, name="adelete"),
+
     path('<str:fog>/', foglalkozasview, name="foglalkozas"),
     path('<str:fog>/<int:alk>/', alkalomview, name="alkalom"),
 
-    path('api/post/jelenlet/',apiview)
+    path('api/post/jelenlet/',apiview),
 ]

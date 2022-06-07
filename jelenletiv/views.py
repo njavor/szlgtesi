@@ -45,32 +45,37 @@ def indexview(request):
                         osztaly = Osztaly.objects.get(evfolyam = str(fields[1]), tagozat = str(fields[2])),
                     )
                     Foglalkozas.objects.get(nev = fields[3]).diakok.add(udiak)
-            elif 'etorles' in request.POST:
-                User.objects.filter(is_staff = False).delete()
-            elif 'ftorles' in request.POST:
-                Foglalkozas.objects.all().delete()
-            elif 'ttorles' in request.POST:
-                Tanulo.objects.all().delete()
-            elif 'alltorles' in request.POST:
-                return HttpResponseRedirect("mindentorles/")
+            elif 'etorles' in request.POST: return HttpResponseRedirect("edzotorles/")
+            elif 'ftorles' in request.POST: return HttpResponseRedirect("foglalkozastorles/")
+            elif 'ttorles' in request.POST: return HttpResponseRedirect("tanulotorles/")
+            elif 'alltorles' in request.POST: return HttpResponseRedirect("mindentorles/")
 
         context['foglalkozasok'] = Foglalkozas.objects.all()
         return render(request, "index.html", context)
 
 
 @login_required
-def alldeleteview(request):
+def deleteview(request, fog):
     if request.user.is_staff:
         if request.method == "POST":
-            if 'mehet' in request.POST:
+
+            if 'mehetE' in request.POST:
+                User.objects.filter(is_staff = False).delete()
+            elif 'mehetF' in request.POST:
+                Foglalkozas.objects.all().delete()
+            elif 'mehetT' in request.POST:
+                Tanulo.objects.all().delete()
+            elif 'mehetA' in request.POST:
+                Alkalom.objects.filter(foglalkozas__url = fog).delete()
+            elif 'mehetALL' in request.POST:
+                User.objects.filter(is_staff = False).delete()
                 Foglalkozas.objects.all().delete()
                 Tanulo.objects.all().delete()
                 Alkalom.objects.all().delete()
-                User.objects.filter(is_staff = False).delete()
             return HttpResponseRedirect("/")
     else: return HttpResponseRedirect(Foglalkozas.objects.get(edzo = request.user).url + '/')
 
-    return render(request, "alldelete.html", {})
+    return render(request, "delete.html", {"mi": request.get_full_path(), "fog": fog})
 
 
 
@@ -98,7 +103,7 @@ def foglalkozasview(request, fog):
                         foglalkozas = Foglalkozas.objects.get(url = fog)
                     )
             elif 'atorles' in request.POST:
-                Alkalom.objects.all().delete()
+                return HttpResponseRedirect(f"/torles/{fog}/")
     return render(request, "foglalkozas.html", context)
     
 

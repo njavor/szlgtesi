@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>cim</title>{% endblock %}
+
+{% load static %}
+{% block statics %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="adszerkeszto" class="section column wide">
+    <form action="" method="post" class="box">
+        {% csrf_token %}
+        {% if mi == "/mindentorles/" %}
+            <h2>Biztosan törli az összes adatát az adatbázisnak?</h2>
+            <p>Ezzel a lépéssel minden Tanuló, Edző, Foglalkozás és Alkalom elvész.</p>
+            <div class="section row wide">
+                <button type="submit" name="mehetALL" class="piros">Igen, törlök mindent</button>
+                <button type="submit" name="megse">Mégse</button>
+            </div>
+        {% elif mi == "/edzotorles/" %}
+            <h2>Biztosan törli az összes edzőt az adatbázisból?</h2>            
+            <div class="section row wide">
+                <button type="submit" name="mehetE" class="piros">Igen, törlöm</button>
+                <button type="submit" name="megse">Mégse</button>
+            </div>
+        {% elif mi == "/foglalkozastorles/" %}
+            <h2>Biztosan törli az összes foglalkozást az adatbázisból?</h2>            
+            <div class="section row wide">
+                <button type="submit" name="mehetF" class="piros">Igen, törlöm</button>
+                <button type="submit" name="megse">Mégse</button>
+            </div>
+        {% elif mi == "/tanulotorles/" %}
+            <h2>Biztosan törli az összes tanulót az adatbázisból?</h2>            
+            <div class="section row wide">
+                <button type="submit" name="mehetT" class="piros">Igen, törlöm</button>
+                <button type="submit" name="megse">Mégse</button>
+            </div>
+        {% elif fog %}
+            <h2>Biztosan törli az összes alkalmat a foglalkozáshoz az adatbázisból?</h2>            
+            <div class="section row wide">
+                <button type="submit" name="mehetA" class="piros">Igen, törlöm</button>
+                <button type="submit" name="megse">Mégse</button>
+            </div>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
