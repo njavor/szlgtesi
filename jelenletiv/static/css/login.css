@@ -2,11 +2,13 @@ main{
     justify-content: center;
 }
 form p{
+    place-self: center;
     display: flex;
     flex-direction: column;
 }
 form label{
     font-size: 14pt;
+    align-self: flex-start;
 }
 form input{
     font-size: 12pt;
@@ -20,4 +22,13 @@ form input{
     align-items: flex-start;
     justify-content: center;
     gap: 0.5em;
+}
+
+.errorlist.nonfield{
+    width: 200px;
+    place-self: center;
+    padding: 10px;
+    background-color: #df5050;
+    font-weight: 600;
+    text-align: center;
 }
