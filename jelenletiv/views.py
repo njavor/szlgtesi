@@ -18,10 +18,10 @@ def indexview(request):
         return HttpResponseRedirect(filter.url + '/')
     except:
         if request.method == "POST":
-            data = str(request.POST['data']).split("\n")
+            data = str(request.POST['data']).split("\r")
             if 'edzo' in request.POST:
                 for sor in data:
-                    fields = sor.split(",")
+                    fields = sor.split(";")
                     User.objects.create(
                         username = fields[0],
                         last_name = fields[1],
@@ -30,7 +30,7 @@ def indexview(request):
                     )
             elif 'foglalkozas' in request.POST:
                 for sor in data:
-                    fields = sor.split(",")
+                    fields = sor.split(";")
                     Foglalkozas.objects.create(
                         nev = fields[0],
                         url = fields[1],
@@ -38,7 +38,7 @@ def indexview(request):
                     )
             elif 'tanulo' in request.POST:
                 for sor in data:
-                    fields = sor.split(",")
+                    fields = sor.split(";")
                     Osztaly.objects.update_or_create(evfolyam = str(fields[1]), tagozat = str(fields[2]))
                     udiak = Tanulo.objects.create(
                         nev = fields[0],
@@ -93,13 +93,11 @@ def foglalkozasview(request, fog):
         context['staff'] = True        
         context['resztvevok'] = Foglalkozas.geturl(fog).diakok.all()
         if request.method == "POST":
-            data = str(request.POST['data']).split("\n")
+            data = str(request.POST['data']).split("\n")[1].split("\r")
             if 'alkalom' in request.POST:
                 for sor in data:
-                    fields = sor.split(",")
-                    print(fields)
                     Alkalom.objects.create(
-                        datum = fields[0],
+                        datum = sor,
                         foglalkozas = Foglalkozas.objects.get(url = fog)
                     )
             elif 'atorles' in request.POST:
