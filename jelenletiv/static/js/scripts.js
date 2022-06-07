@@ -25,6 +25,7 @@ function main(){
     document.getElementById('hamburger-icon').addEventListener('click', async function(){
         this.classList.toggle("change");
         document.getElementById('mobile-nav').classList.toggle("change");
+        document.body.classList.toggle('lock-scroll')
     })
     window.addEventListener('resize', function(){
         hi = document.getElementById('hamburger-icon');
@@ -32,6 +33,7 @@ function main(){
         if(this.getComputedStyle(hi, null).getPropertyValue("display") === "none"){
             hi.classList.remove("change");
             mn.classList.remove("change");
+            document.body.classList.remove('lock-scroll');
         }
     })
 }
