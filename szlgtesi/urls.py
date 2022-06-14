@@ -2,7 +2,7 @@ from django.views.generic.base import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.contrib import admin
 from django.urls import path, include
-from jelenletiv.views import foglalkozasview, indexview, alkalomview, deleteview, apiview
+from jelenletiv.views import foglalkozasview, indexview, alkalomview, deleteview, errorview, apiview
 
 urlpatterns = [
     path(
@@ -14,6 +14,7 @@ urlpatterns = [
 
     path('', include('django.contrib.auth.urls')),
     path('', indexview, name="index"),
+    path('hiba/', errorview, name="hiba"),
 
     path('mindentorles/', deleteview, name="alldelete"),
     path('edzotorles/', deleteview, name="edelete"),

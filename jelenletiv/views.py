@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -22,29 +22,35 @@ def indexview(request):
             if 'edzo' in request.POST:
                 for sor in data:
                     fields = sor.split(";")
-                    User.objects.create(
-                        username = fields[0],
-                        last_name = fields[1],
-                        first_name = fields[2],
-                        password = make_password(fields[3]),
-                    )
+                    try:
+                        User.objects.create(
+                            username = fields[0],
+                            last_name = fields[1],
+                            first_name = fields[2],
+                            password = make_password(fields[3]),
+                        )
+                    except: return HttpResponseRedirect("hiba/") 
             elif 'foglalkozas' in request.POST:
                 for sor in data:
                     fields = sor.split(";")
-                    Foglalkozas.objects.create(
-                        nev = fields[0],
-                        url = fields[1],
-                        edzo = User.objects.get(username = fields[2]),
-                    )
+                    try:
+                        Foglalkozas.objects.create(
+                            nev = fields[0],
+                            url = fields[1],
+                            edzo = User.objects.get(username = fields[2]),
+                        )
+                    except: return HttpResponseRedirect("hiba/")
             elif 'tanulo' in request.POST:
                 for sor in data:
                     fields = sor.split(";")
-                    Osztaly.objects.update_or_create(evfolyam = str(fields[1]), tagozat = str(fields[2]))
-                    udiak = Tanulo.objects.create(
-                        nev = fields[0],
-                        osztaly = Osztaly.objects.get(evfolyam = str(fields[1]), tagozat = str(fields[2])),
-                    )
-                    Foglalkozas.objects.get(nev = fields[3]).diakok.add(udiak)
+                    try:
+                        Osztaly.objects.update_or_create(evfolyam = str(fields[1]), tagozat = str(fields[2]))
+                        udiak = Tanulo.objects.create(
+                            nev = fields[0],
+                            osztaly = Osztaly.objects.get(evfolyam = str(fields[1]), tagozat = str(fields[2])),
+                        )
+                        Foglalkozas.objects.get(nev = fields[3]).diakok.add(udiak)
+                    except: return HttpResponseRedirect("hiba/")
             elif 'etorles' in request.POST: return HttpResponseRedirect("edzotorles/")
             elif 'ftorles' in request.POST: return HttpResponseRedirect("foglalkozastorles/")
             elif 'ttorles' in request.POST: return HttpResponseRedirect("tanulotorles/")
@@ -55,7 +61,7 @@ def indexview(request):
 
 
 @login_required
-def deleteview(request, fog):
+def deleteview(request, fog=""):
     if request.user.is_staff:
         if request.method == "POST":
 
@@ -77,6 +83,10 @@ def deleteview(request, fog):
 
     return render(request, "delete.html", {"mi": request.get_full_path(), "fog": fog})
 
+def errorview(request):
+    if request.method == "POST":
+        return HttpResponseRedirect("/")
+    return render(request, "error.html", {})
 
 
 @login_required
@@ -93,13 +103,15 @@ def foglalkozasview(request, fog):
         context['staff'] = True        
         context['resztvevok'] = Foglalkozas.geturl(fog).diakok.all()
         if request.method == "POST":
-            data = str(request.POST['data']).split("\n")[1].split("\r")
             if 'alkalom' in request.POST:
+                data = str(request.POST['data']).split("\n")[1].split("\r")
                 for sor in data:
-                    Alkalom.objects.create(
-                        datum = sor,
-                        foglalkozas = Foglalkozas.objects.get(url = fog)
-                    )
+                    try:
+                        Alkalom.objects.create(
+                            datum = sor,
+                            foglalkozas = Foglalkozas.objects.get(url = fog)
+                        )
+                    except: return HttpResponseRedirect("hiba/")
             elif 'atorles' in request.POST:
                 return HttpResponseRedirect(f"/torles/{fog}/")
     return render(request, "foglalkozas.html", context)

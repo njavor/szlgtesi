@@ -2,7 +2,14 @@
     #desktop-nav{display: none;}
     #hamburger-icon{display: inline-block;}
     
+    header{
+        grid-template-columns: 3% 1fr 50px 5%;
+    }
+    .balh .cim{
+        font-size: 25pt;
+    }
     #adszerkeszto{display: none;}
     .box{width: 70%;}
-    main h1{font-size: 25pt;}
+    main h1{font-size: 20pt;}
+    main h2{font-size: 16pt;}
 }
